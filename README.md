@@ -4,7 +4,7 @@ Reliability engineering analysis of a motorcycle Continuously Variable Transmiss
 
 ## Project Overview
 
-The drivetrain was modeled using seven primary mechanical components responsible for transmitting engine torque to the rear wheel:
+The drivetrain was modeled using seven primary mechanical components:
 
 - Multi-plate clutch assembly
 - Rubber drive belt
@@ -21,8 +21,6 @@ The analysis evaluates component failure modes, system architecture, time-depend
 ## Failure Modes, Effects & Criticality Analysis (FMECA)
 
 A **Failure Modes, Effects, and Criticality Analysis (FMECA)** was performed across the drivetrain components.
-
-Risk Priority Number was calculated using:
 
 **RPN = Severity × Occurrence × Detection**
 
@@ -44,11 +42,11 @@ The drive belt was also identified as a critical single-point failure because co
 
 ## Reliability Block Diagram
 
-The drivetrain was represented using a **series-parallel Reliability Block Diagram**.
+The drivetrain was represented using a **series-parallel Reliability Block Diagram (RBD)**.
 
 The multi-plate clutch was modeled as a redundant parallel subsystem, while the drive belt, input sheave, output sheave, gearbox, bearings, and oil seals were modeled in series.
 
-![Reliability Block Diagram](images/rbd.png)
+![Reliability Block Diagram](rbd.png)
 
 The system reliability relationship is:
 
@@ -102,15 +100,15 @@ Weibull probability density functions were used to examine the time-dependent fa
 
 ### Drive Belt
 
-![Drive Belt Weibull Distribution](images/belt_weibull.png)
+![Drive Belt Weibull Distribution](belt_weibull.png)
 
 **β = 1.2, η = 26,280 hr**
 
-The shape parameter indicates near-constant to mildly increasing hazard, consistent with fatigue and surface-wear failure mechanisms.
+The drive belt exhibits near-constant to mildly increasing hazard associated with fatigue and surface wear.
 
 ### Bearings
 
-![Bearing Weibull Distribution](images/bearing_weibull.png)
+![Bearing Weibull Distribution](bearing_weibull.png)
 
 **β = 1.3, η = 43,800 hr**
 
@@ -118,11 +116,11 @@ The bearing model represents a slightly increasing failure rate associated with 
 
 ### Gearbox
 
-![Gearbox Weibull Distribution](images/gearbox_weibull.png)
+![Gearbox Weibull Distribution](gearbox_weibull.png)
 
 **β = 2.0, η = 78,840 hr**
 
-The higher Weibull shape parameter represents increasing wear-out behavior associated with repeated gear-tooth loading.
+The gearbox exhibits increasing wear-out behavior associated with repeated gear-tooth loading.
 
 ---
 
@@ -130,7 +128,7 @@ The higher Weibull shape parameter represents increasing wear-out behavior assoc
 
 Combining the component reliability values through the series-parallel RBD produced:
 
-# 52.43% One-Year System Reliability
+# **52.43% One-Year System Reliability**
 
 The result represents a **no-maintenance, continuous-operation scenario over 8,760 hours**.
 
@@ -142,15 +140,18 @@ The drive belt, oil seals, and bearings were identified as major contributors to
 
 A **three-state Continuous-Time Markov Chain (CTMC)** was developed to model transitions between fully operational, degraded, and failed drivetrain conditions.
 
-![3-State Markov Chain Model](images/markov_chain.png)
+![3-State Markov Chain Model](markov_chain.png)
 
 ### State 0 — Fully Operational
+
 All drivetrain components and both clutch plates are functioning.
 
 ### State 1 — Degraded
+
 One clutch plate has failed, but the remaining plate allows the drivetrain to continue operating.
 
 ### State F — Failed
+
 The drivetrain can no longer transmit power. This is modeled as an absorbing state.
 
 The state transitions are:
@@ -183,7 +184,7 @@ $$
 R(8760)\approx0.5243
 $$
 
-The Markov model therefore produced approximately the same **52.43% one-year reliability** as the Reliability Block Diagram analysis.
+The Markov model produced approximately the same **52.43% one-year reliability** as the Reliability Block Diagram analysis.
 
 ---
 
@@ -210,8 +211,6 @@ The Markov model therefore produced approximately the same **52.43% one-year rel
 
 ## Engineering Recommendations
 
-The reliability analysis identified several opportunities for preventive maintenance and drivetrain reliability improvement:
-
 - Inspect drive-belt tension and edge cracking at regular service intervals.
 - Replace degraded oil seals before lubricant loss contributes to secondary failures.
 - Monitor bearings for vibration, contamination, and lubrication degradation.
@@ -224,10 +223,3 @@ The reliability analysis identified several opportunities for preventive mainten
 
 **MATLAB** • **FMECA** • **RPN** • **Reliability Block Diagrams** • **Weibull Analysis** • **Continuous-Time Markov Chains** • **Failure Rate Analysis**
 
----
-
-## Full Technical Report
-
-The full report contains the complete **FMECA, reliability calculations, Weibull parameters, Reliability Block Diagram development, Markov transition equations, assumptions, and engineering recommendations**.
-
-[View Full Technical Report](Motorcycle_Drivetrain_Reliability_Report.pdf)
