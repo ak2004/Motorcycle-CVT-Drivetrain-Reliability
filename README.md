@@ -1,5 +1,3 @@
-# Motorcycle-CVT-Drivetrain-Reliability
-Reliability analysis of a motorcycle CVT drivetrain using FMECA, Weibull distributions, RBD, Markov modeling, and MATLAB.
 # Motorcycle CVT Drivetrain Reliability Analysis
 
 Reliability engineering analysis of a motorcycle Continuously Variable Transmission (CVT) drivetrain using **FMECA, Reliability Block Diagrams (RBD), Weibull analysis, and continuous-time Markov modeling** to identify critical failure modes and quantify system reliability.
